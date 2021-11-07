@@ -9,7 +9,7 @@ import {Note} from "../interface/note"
   providedIn: 'root'
 })
 export class NoteService {
-  private readonly server = '';
+  private readonly server = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {
   }
@@ -48,7 +48,7 @@ export class NoteService {
     if (error.error instanceof ErrorEvent) {
       errorMessage = `A client error occurred - ${error.error.message}`;
     } else {
-      if (error.error) {
+      if (error.error.reason) {
         errorMessage = `${error.error.reason} - Error code ${error.status}`;
       } else {
         errorMessage = `An error occurred - Error code ${error.status}`;
